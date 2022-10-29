@@ -36,97 +36,104 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-// import puppeteer from "puppeteer";
 const axios_1 = __importDefault(require("axios"));
 const cheerio = __importStar(require("cheerio"));
 const router = express_1.default.Router();
-/*
-router.get("/movie/info", async (req, res) => {
-  let title = req.query.title as string;
-  let openDt = req.query.openDt as string;
-
-  const browser = await puppeteer.launch({ headless: true });
-  const page = await browser.newPage();
-  
-  let searchUrl = `https://movie.naver.com/movie/search/result.naver?section=movie&query=${title}`;
-  await page.goto(searchUrl);
-
-  await page.waitForSelector(".search_list_1");
-
-  let searchResults = await page.$$eval(".search_list_1 li", elements => {
-    let items = elements.map(el => {
-      let href = el.querySelector("dl dt a")?.getAttribute("href") ?? null;
-      let year = el.querySelector("dl .etc > a:last-child")?.textContent ?? null;
-      return { href, year };
-    })
-    return items
-  })
-
-  let link = searchResults[0].href;
-
-  for (let i = 0; i < searchResults.length; i++) {
-    let item = searchResults[i];
-    if (item.year && item.year == new Date(openDt).getFullYear().toString()) {
-      link = item.href;
-    }
-  }
-
-  if (link) {
-    await page.goto("https://movie.naver.com/" + link);
-
-    await page.waitForSelector(".poster a img");
-    await page.waitForSelector(".h_tx_story");
-    await page.waitForSelector(".con_tx");
-
-    let posterSrc = await page.$eval(".poster a img", el => el.getAttribute("src"));
-    let summary = await page.$eval(".h_tx_story", el => el.textContent);
-    let content = await page.$eval(".con_tx", el => el.textContent);
-
-    // res.json({ src: posterSrc, summary, content });
-    res.writeHead(200, { "Content-Type": "text/html;charset=utf-8" });
-    res.write(`<img src="${posterSrc}" style="width: 300px;" />`);
-    res.end();
-  } else {
-
-  }
-
-
-  // let selector = ".h_tx_story";
-
-  // await page.waitForSelector(selector);
-
-  // let data = await page.$eval(selector, element => {
-  //   return element.textContent;
-  // });
-
-  // console.log(data);
-
-  browser.close();
-})
-*/
 router.get("/movie/info", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const title = req.query.title;
+    const dirs = req.query.dirs;
+    // 네이버 영화에서 검색
     const searchUrl = "https://movie.naver.com/movie/search/result.naver";
     const searchQuerys = { params: { section: "movie", query: title } };
     const searchResponse = yield axios_1.default.get(searchUrl, searchQuerys);
     let $ = cheerio.load(searchResponse.data);
     const list = $(".search_list_1").find("li");
-    let link = $(list[0]).find("dl dt a").attr("href");
+    let link;
+    // 영화 제목과 감독명이 일치하는 항목 찾기
+    list.each((_, item) => {
+        const director = $(item).find("dl dd.etc").last().find("a:first-child").text();
+        if (dirs.includes(director)) {
+            link = $(item).find("dl dt a").attr("href");
+        }
+    });
+    // 일치하는 항목이 없을 때
+    if (!link) {
+        res.json({
+            "result": "failure",
+            "data": {}
+        });
+        return;
+    }
+    // 영화 상세 페이지
     const movieInfoUrl = "https://movie.naver.com" + link;
-    console.log(movieInfoUrl);
     const movieInfoResponse = yield axios_1.default.get(movieInfoUrl);
     $ = cheerio.load(movieInfoResponse.data);
     const posterSrc = $(".poster a img").attr("src");
     const summary1 = $(".story_area .h_tx_story").text();
     const summary2 = $(".story_area .con_tx").text();
+    const score = $(".mv_info_area .main_score .score:first-child a .star_score :not(:first-child)").text();
+    const posterUrl = new URL(posterSrc !== null && posterSrc !== void 0 ? posterSrc : "");
+    const imgSrc = posterUrl.origin + posterUrl.pathname;
+    // 포토뷰 페이지
+    const _url = new URL(movieInfoUrl);
+    const code = _url.searchParams.get("code");
+    const photoViewUrl = "https://movie.naver.com/movie/bi/mi/photo.naver?code=" + code + "#tab";
+    const photoViewResponse = yield axios_1.default.get(photoViewUrl);
+    $ = cheerio.load(photoViewResponse.data);
+    const imgEls = $("#gallery_group").find("._brick a img");
+    const imgSrcList = [];
+    imgEls.each((_, el) => {
+        const src = $(el).attr("src");
+        const imgUrl = new URL(src);
+        imgSrcList.push(imgUrl.origin + imgUrl.pathname);
+    });
+    res.json({
+        "result": "success",
+        "data": {
+            "posterSrc": imgSrc,
+            "summary1": summary1,
+            "summary2": summary2,
+            "score": score,
+            "images": imgSrcList
+        }
+    });
+}));
+router.get("/movie/poster", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const title = req.query.title;
+    const dirs = req.query.dirs;
+    // 네이버 영화에서 검색
+    const searchUrl = "https://movie.naver.com/movie/search/result.naver";
+    const searchQuerys = { params: { section: "movie", query: title } };
+    const searchResponse = yield axios_1.default.get(searchUrl, searchQuerys);
+    let $ = cheerio.load(searchResponse.data);
+    const list = $(".search_list_1").find("li");
+    let link;
+    // 영화 제목과 감독명이 일치하는 항목 찾기
+    list.each((_, item) => {
+        const director = $(item).find("dl dd.etc").last().find("a:first-child").text();
+        if (dirs.includes(director)) {
+            link = $(item).find("dl dt a").attr("href");
+        }
+    });
+    // 일치하는 항목이 없을 때
+    if (!link) {
+        res.json({
+            "result": "failure"
+        });
+        return;
+    }
+    // 영화 상세 페이지
+    const movieInfoUrl = "https://movie.naver.com" + link;
+    const movieInfoResponse = yield axios_1.default.get(movieInfoUrl);
+    $ = cheerio.load(movieInfoResponse.data);
+    const posterSrc = $(".poster a img").attr("src");
     const posterUrl = new URL(posterSrc !== null && posterSrc !== void 0 ? posterSrc : "");
     const imgSrc = posterUrl.origin + posterUrl.pathname;
     res.json({
-        "postSrc": imgSrc,
-        "summary1": summary1,
-        "summary2": summary2
+        "result": "success",
+        "data": {
+            "posterSrc": imgSrc
+        }
     });
 }));
-router.get("/movie/poster", (req, res) => {
-});
 exports.default = router;

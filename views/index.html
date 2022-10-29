@@ -8,5 +8,53 @@
 </head>
 <body>
   <h1>Custom API</h1>
+  <h3>/search/movie/info</h3>
+  <ul>
+    <li>
+      <span>Request</span>
+      <ul>
+        <li>title</li>
+        <li>dirs : "name1|name2|name3"</li>
+      </ul>
+    </li>
+    <li>
+      <span>Response</span>
+      <ul>
+        <li>result</li>
+        <li>
+          <span>data</span>
+          <ul>
+            <li>posterSrc</li>
+            <li>summary1</li>
+            <li>summary2</li>
+            <li>score</li>
+            <li>images</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <h3>/search/movie/poster</h3>
+  <ul>
+    <li>
+      <span>Request</span>
+      <ul>
+        <li>title</li>
+        <li>dirs : "name1|name2|name3"</li>
+      </ul>
+    </li>
+    <li>
+      <span>Response</span>
+      <ul>
+        <li>result</li>
+        <li>
+          <span>data</span>
+          <ul>
+            <li>posterSrc</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </body>
 </html>
