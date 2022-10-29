@@ -9,5 +9,5 @@ app.use("/", indexRouter);
 app.use("/search", searchRouter);
 
 app.listen(8000, () => {
-  console.log("Express server is running on port 3000");
+  console.log("Express server is running on port 8000");
 })
