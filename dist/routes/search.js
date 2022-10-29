@@ -42,6 +42,18 @@ const router = express_1.default.Router();
 router.get("/movie/info", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const title = req.query.title;
     const dirs = req.query.dirs;
+    if (title == undefined) {
+        res.json({
+            "result": "failure (no title)"
+        });
+        return;
+    }
+    if (dirs == undefined) {
+        res.json({
+            "result": "failure (no dirs)"
+        });
+        return;
+    }
     // 네이버 영화에서 검색
     const searchUrl = "https://movie.naver.com/movie/search/result.naver";
     const searchQuerys = { params: { section: "movie", query: title } };
@@ -101,6 +113,18 @@ router.get("/movie/info", (req, res) => __awaiter(void 0, void 0, void 0, functi
 router.get("/movie/poster", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const title = req.query.title;
     const dirs = req.query.dirs;
+    if (title == undefined) {
+        res.json({
+            "result": "failure (no title)"
+        });
+        return;
+    }
+    if (dirs == undefined) {
+        res.json({
+            "result": "failure (no dirs)"
+        });
+        return;
+    }
     // 네이버 영화에서 검색
     const searchUrl = "https://movie.naver.com/movie/search/result.naver";
     const searchQuerys = { params: { section: "movie", query: title } };
