@@ -6,8 +6,21 @@ import * as cheerio from "cheerio";
 const router = express.Router();
 
 router.get("/movie/info", async (req, res) => {
-  const title = req.query.title as string;
-  const dirs = req.query.dirs as string;
+  const title = req.query.title as string|undefined;
+  const dirs = req.query.dirs as string|undefined;
+
+  if (title == undefined) {
+    res.json({
+      "result": "failure (no title)"
+    });
+    return;
+  }
+  if (dirs == undefined) {
+    res.json({
+      "result": "failure (no dirs)"
+    });
+    return;
+  }
 
   // 네이버 영화에서 검색
   const searchUrl = "https://movie.naver.com/movie/search/result.naver";
@@ -82,8 +95,21 @@ router.get("/movie/info", async (req, res) => {
 })
 
 router.get("/movie/poster", async(req, res) => {
-  const title = req.query.title as string;
-  const dirs = req.query.dirs as string;
+  const title = req.query.title as string|undefined;
+  const dirs = req.query.dirs as string|undefined;
+
+  if (title == undefined) {
+    res.json({
+      "result": "failure (no title)"
+    });
+    return;
+  }
+  if (dirs == undefined) {
+    res.json({
+      "result": "failure (no dirs)"
+    });
+    return;
+  }
 
   // 네이버 영화에서 검색
   const searchUrl = "https://movie.naver.com/movie/search/result.naver";
