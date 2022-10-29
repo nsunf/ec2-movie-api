@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "pm2 start ./dist/app.js",
+    "heroku-prebuild": "npm ci",
     "dev": "concurrently \"npm run tsc\" \"npm run nodemon\"",
     "tsc": "tsc -w",
     "nodemon": "nodemon ./dist/app.js"
