@@ -1,11 +1,10 @@
 import express from "express";
+import path from "path";
 
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  res.writeHead(200, { "Content-Type": "text/html;charset=utf-8"});
-  res.write("<h1>Custom API</h1>");
-  res.end();
+  res.sendFile(path.resolve(__dirname, "../../views/index.html"));
 })
 
 export default router;
