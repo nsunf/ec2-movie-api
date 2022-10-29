@@ -8,6 +8,6 @@ const app = express();
 app.use("/", indexRouter);
 app.use("/search", searchRouter);
 
-app.listen(8000, () => {
-  console.log("Express server is running on port 8000");
+app.listen(process.env.PORT, () => {
+  console.log("Express server is running on port " + process.env.PORT);
 })
