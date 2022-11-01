@@ -27,7 +27,8 @@ class Kobis {
   async getWeeklyBoxOffice(targetDt: string): Promise<WeeklyBoxOfficeResponse> {
     const params = {
       key: Kobis.key,
-      targetDt
+      targetDt,
+      weekGb: "0"
     }
     const response = await axios.get(Kobis.url.weekly, { params });
 

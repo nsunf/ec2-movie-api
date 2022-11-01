@@ -30,7 +30,8 @@ class Kobis {
         return __awaiter(this, void 0, void 0, function* () {
             const params = {
                 key: Kobis.key,
-                targetDt
+                targetDt,
+                weekGb: "0"
             };
             const response = yield axios_1.default.get(Kobis.url.weekly, { params });
             return response.data;
