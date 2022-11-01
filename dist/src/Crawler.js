@@ -47,11 +47,14 @@ class Crawler {
             const $ = cheerio.load(searchResponse.data);
             const list = $(".search_list_1").find("li");
             let link;
-            list.each((_, item) => {
+            for (let i = 0; i < list.length; i++) {
+                const item = list[i];
                 const director = $(item).find("dl dd.etc").last().find("a:first-child").text();
-                if (dirs.includes(director))
+                if (dirs.includes(director)) {
                     link = $(item).find("dl dt a").attr("href");
-            });
+                    break;
+                }
+            }
             if (!link)
                 return;
             return "https://movie.naver.com" + link;
