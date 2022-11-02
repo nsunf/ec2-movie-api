@@ -1,4 +1,5 @@
 import express from "express";
+import path from "path";
 
 import Kobis from "../src/Kobis";
 import Crawler from "../src/Crawler";
@@ -7,7 +8,6 @@ const router = express.Router();
 
 const kobis = new Kobis();
 const crawler = new Crawler();
-
 
 router.get("/list", async (req, res) => {
   const movieNm = req.query.movieNm as string|undefined;
@@ -93,5 +93,13 @@ router.get("/info", async (req, res) => {
     movieInfo: result
   })
 });
+
+router.get("/list/dummy", (req, res) => [
+  res.sendFile(path.resolve(__dirname, "../../public/dummyData/list.json"))
+])
+
+router.get("/info/dummy", (req, res) => [
+  res.sendFile(path.resolve(__dirname, "../../public/dummyData/info.json"))
+])
 
 export default router;

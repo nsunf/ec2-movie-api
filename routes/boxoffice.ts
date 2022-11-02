@@ -1,4 +1,6 @@
 import express from "express";
+import path from "path";
+
 import Crawler from "../src/Crawler";
 import Kobis from "../src/Kobis";
 
@@ -98,5 +100,13 @@ router.get("/weekly", async (req, res) => {
     weeklyBoxOfficeList: result
   })
 });
+
+router.get("/daily/dummy", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "../../public/dummyData/daily.json"));
+})
+
+router.get("/weekly/dummy", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "../../public/dummyData/weekly.json"));
+})
 
 export default router;

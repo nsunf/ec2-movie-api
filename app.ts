@@ -12,6 +12,7 @@ import movieRouter from "./routes/movie";
 const app = express();
 
 app.use(cors());
+app.use(express.static("public"));
 
 app.use("/", indexRouter);
 app.use("/boxoffice", boxofficeRouter);

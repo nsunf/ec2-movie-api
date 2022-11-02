@@ -13,6 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+const path_1 = __importDefault(require("path"));
 const Kobis_1 = __importDefault(require("../src/Kobis"));
 const Crawler_1 = __importDefault(require("../src/Crawler"));
 const router = express_1.default.Router();
@@ -87,4 +88,10 @@ router.get("/info", (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         movieInfo: result
     });
 }));
+router.get("/list/dummy", (req, res) => [
+    res.sendFile(path_1.default.resolve(__dirname, "../../public/dummyData/list.json"))
+]);
+router.get("/info/dummy", (req, res) => [
+    res.sendFile(path_1.default.resolve(__dirname, "../../public/dummyData/info.json"))
+]);
 exports.default = router;

@@ -23,6 +23,11 @@ class Kobis {
                 targetDt
             };
             const response = yield axios_1.default.get(Kobis.url.daily, { params });
+            if (response.data.faultInfo) {
+                params.key = Kobis.subKey;
+                const response = yield axios_1.default.get(Kobis.url.daily, { params });
+                return response.data;
+            }
             return response.data;
         });
     }
@@ -34,6 +39,11 @@ class Kobis {
                 weekGb: "0"
             };
             const response = yield axios_1.default.get(Kobis.url.weekly, { params });
+            if (response.data.faultInfo) {
+                params.key = Kobis.subKey;
+                const response = yield axios_1.default.get(Kobis.url.weekly, { params });
+                return response.data;
+            }
             return response.data;
         });
     }
@@ -45,6 +55,11 @@ class Kobis {
                 curPage
             };
             const response = yield axios_1.default.get(Kobis.url.list, { params });
+            if (response.data.faultInfo) {
+                params.key = Kobis.subKey;
+                const response = yield axios_1.default.get(Kobis.url.list, { params });
+                return response.data;
+            }
             return response.data;
         });
     }
@@ -55,12 +70,17 @@ class Kobis {
                 movieCd
             };
             const response = yield axios_1.default.get(Kobis.url.info, { params });
+            if (response.data.faultInfo) {
+                params.key = Kobis.subKey;
+                const response = yield axios_1.default.get(Kobis.url.info, { params });
+                return response.data;
+            }
             return response.data;
         });
     }
 }
-// static key = "6e366ce8b5c64c17cdc1520bdc6af5d8";
-Kobis.key = "5e4750aaf469fb766d10b839c8026157";
+Kobis.key = "6e366ce8b5c64c17cdc1520bdc6af5d8";
+Kobis.subKey = "5e4750aaf469fb766d10b839c8026157";
 Kobis.url = {
     daily: "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json",
     weekly: "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchWeeklyBoxOfficeList.json",

@@ -13,6 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+const path_1 = __importDefault(require("path"));
 const Crawler_1 = __importDefault(require("../src/Crawler"));
 const Kobis_1 = __importDefault(require("../src/Kobis"));
 const router = express_1.default.Router();
@@ -90,4 +91,10 @@ router.get("/weekly", (req, res) => __awaiter(void 0, void 0, void 0, function* 
         weeklyBoxOfficeList: result
     });
 }));
+router.get("/daily/dummy", (req, res) => {
+    res.sendFile(path_1.default.resolve(__dirname, "../../public/dummyData/daily.json"));
+});
+router.get("/weekly/dummy", (req, res) => {
+    res.sendFile(path_1.default.resolve(__dirname, "../../public/dummyData/weekly.json"));
+});
 exports.default = router;

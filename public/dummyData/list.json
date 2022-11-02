@@ -1,0 +1,219 @@
+{
+  "status": "ok",
+  "curPage": "1",
+  "totPage": "5",
+  "totCnt": 46,
+  "movieList": [
+    {
+      "movieCd": "20226777",
+      "movieNm": "극장판 짱구는 못말려: 수수께끼! 꽃피는 천하떡잎학교",
+      "movieNmEn": "Crayon Shin-chan: School Mystery! The Splendid Tenkasu Academy",
+      "prdtYear": "2021",
+      "openDt": "20220928",
+      "typeNm": "장편",
+      "prdtStatNm": "개봉",
+      "nationAlt": "일본",
+      "genreAlt": "애니메이션",
+      "repNationNm": "일본",
+      "repGenreNm": "애니메이션",
+      "directors": [
+        {
+          "peopleNm": "타카하시 와타루"
+        }
+      ],
+      "companys": [],
+      "score": "8.90",
+      "poster": "https://movie-phinf.pstatic.net/20220930_90/1664503344646CtlxN_JPEG/movie_image.jpg"
+    },
+    {
+      "movieCd": "20218604",
+      "movieNm": "극장판 짱구는 못말려: 격돌! 낙서왕국과 얼추 네 명의 용사들",
+      "movieNmEn": "Crayon Shin-chan: Crash! Scribble Kingdom and Almost Four Heroes",
+      "prdtYear": "2020",
+      "openDt": "20210915",
+      "typeNm": "장편",
+      "prdtStatNm": "개봉",
+      "nationAlt": "일본",
+      "genreAlt": "애니메이션",
+      "repNationNm": "일본",
+      "repGenreNm": "애니메이션",
+      "directors": [
+        {
+          "peopleNm": "쿄고쿠 타카히코"
+        }
+      ],
+      "companys": [],
+      "score": "8.83",
+      "poster": "https://movie-phinf.pstatic.net/20210915_97/16316820287099vGmY_JPEG/movie_image.jpg"
+    },
+    {
+      "movieCd": "20202281",
+      "movieNm": "극장판 짱구는 못말려: 신혼여행 허리케인~ 사라진 아빠!",
+      "movieNmEn": "Crayon Shin-chan: Honeymoon Hurricane ~The Lost Hiroshi~",
+      "prdtYear": "2019",
+      "openDt": "20200820",
+      "typeNm": "장편",
+      "prdtStatNm": "개봉",
+      "nationAlt": "일본",
+      "genreAlt": "애니메이션",
+      "repNationNm": "일본",
+      "repGenreNm": "애니메이션",
+      "directors": [
+        {
+          "peopleNm": "하시모토 마사카즈"
+        }
+      ],
+      "companys": [],
+      "score": "9.19",
+      "poster": "https://movie-phinf.pstatic.net/20200806_196/1596705003939WIMwG_JPEG/movie_image.jpg"
+    },
+    {
+      "movieCd": "20183479",
+      "movieNm": "극장판 짱구는 못말려: 아뵤! 쿵후 보이즈 ~라면 대란~",
+      "movieNmEn": "Crayon Shin-chan: Burst Serving! Kung Fu Boys - Ramen Rebellion",
+      "prdtYear": "2018",
+      "openDt": "20181219",
+      "typeNm": "장편",
+      "prdtStatNm": "개봉",
+      "nationAlt": "일본",
+      "genreAlt": "애니메이션",
+      "repNationNm": "일본",
+      "repGenreNm": "애니메이션",
+      "directors": [
+        {
+          "peopleNm": "타카하시 와타루"
+        }
+      ],
+      "companys": [],
+      "score": "8.90",
+      "poster": "https://movie-phinf.pstatic.net/20181207_248/1544159891384q2EC6_JPEG/movie_image.jpg"
+    },
+    {
+      "movieCd": "20178321",
+      "movieNm": "극장판 짱구는 못말려 : 습격!! 외계인 덩덩이",
+      "movieNmEn": "Crayon Shinchan 2017 Theatrical Film: Invasion!! Alien Shiriri",
+      "prdtYear": "2017",
+      "openDt": "20170720",
+      "typeNm": "장편",
+      "prdtStatNm": "개봉",
+      "nationAlt": "일본",
+      "genreAlt": "애니메이션",
+      "repNationNm": "일본",
+      "repGenreNm": "애니메이션",
+      "directors": [
+        {
+          "peopleNm": "하시모토 마사카즈"
+        }
+      ],
+      "companys": [],
+      "score": "8.68",
+      "poster": "https://movie-phinf.pstatic.net/20170628_184/1498637728250BhI66_JPEG/movie_image.jpg"
+    },
+    {
+      "movieCd": "20167285",
+      "movieNm": "짱구는 못말려 극장판: 폭풍수면! 꿈꾸는 세계 대돌격",
+      "movieNmEn": "Crayon Shinchan 2016 Theatrical Film:Bakusui Yumemmy World Daitotsugeki",
+      "prdtYear": "2016",
+      "openDt": "20170125",
+      "typeNm": "장편",
+      "prdtStatNm": "개봉",
+      "nationAlt": "일본",
+      "genreAlt": "애니메이션",
+      "repNationNm": "일본",
+      "repGenreNm": "애니메이션",
+      "directors": [
+        {
+          "peopleNm": "타카하시 와타루"
+        }
+      ],
+      "companys": [],
+      "score": "8.77",
+      "poster": "https://movie-phinf.pstatic.net/20170110_166/1484038104926uPjpU_JPEG/movie_image.jpg"
+    },
+    {
+      "movieCd": "20150024",
+      "movieNm": "짱구는 못말려 극장판: 나의 이사 이야기 선인장 대습격",
+      "movieNmEn": "Crayon Shin-Chan: My Moving Story! Cactus Large Attack!",
+      "prdtYear": "2015",
+      "openDt": "20160107",
+      "typeNm": "장편",
+      "prdtStatNm": "개봉",
+      "nationAlt": "일본",
+      "genreAlt": "애니메이션",
+      "repNationNm": "일본",
+      "repGenreNm": "애니메이션",
+      "directors": [
+        {
+          "peopleNm": "하시모토 마사카즈"
+        }
+      ],
+      "companys": [],
+      "score": "8.75",
+      "poster": "https://movie-phinf.pstatic.net/20151222_10/1450748403344L8Ou4_JPEG/movie_image.jpg"
+    },
+    {
+      "movieCd": "19850017",
+      "movieNm": "내사랑 짱구",
+      "movieNmEn": "My Love Jjang-Gu",
+      "prdtYear": "1985",
+      "openDt": "19850323",
+      "typeNm": "장편",
+      "prdtStatNm": "개봉",
+      "nationAlt": "한국",
+      "genreAlt": "드라마",
+      "repNationNm": "한국",
+      "repGenreNm": "드라마",
+      "directors": [
+        {
+          "peopleNm": "유진선"
+        }
+      ],
+      "companys": [
+        {
+          "companyCd": "20100683",
+          "companyNm": "화풍흥업"
+        }
+      ],
+      "score": "",
+      "poster": "https://movie-phinf.pstatic.net/20111221_231/1324463965153vagyS_JPEG/movie_image.jpg"
+    },
+    {
+      "movieCd": "20158461",
+      "movieNm": "짱구는 못말려 극장판 : 정면승부! 로봇아빠의 역습",
+      "movieNmEn": "Crayon Shin-chan: Gachinko! Gyakusyu no Robo Tochan!!",
+      "prdtYear": "2014",
+      "openDt": "20150423",
+      "typeNm": "장편",
+      "prdtStatNm": "개봉",
+      "nationAlt": "일본",
+      "genreAlt": "애니메이션,코미디,어드벤처",
+      "repNationNm": "일본",
+      "repGenreNm": "애니메이션",
+      "directors": [
+        {
+          "peopleNm": "타카하시 와타루"
+        }
+      ],
+      "companys": [],
+      "score": "8.47",
+      "poster": "https://movie-phinf.pstatic.net/20150402_280/1427965290342KSq3u_JPEG/movie_image.jpg"
+    },
+    {
+      "movieCd": "20144041",
+      "movieNm": "호호와 찡구",
+      "movieNmEn": "",
+      "prdtYear": "2014",
+      "openDt": "",
+      "typeNm": "단편",
+      "prdtStatNm": "기타",
+      "nationAlt": "한국",
+      "genreAlt": "드라마",
+      "repNationNm": "한국",
+      "repGenreNm": "드라마",
+      "directors": [],
+      "companys": [],
+      "score": 0,
+      "poster": ""
+    }
+  ]
+}

@@ -1,8 +1,8 @@
 import axios from "axios";
 
 class Kobis {
-  // static key = "6e366ce8b5c64c17cdc1520bdc6af5d8";
-  static key = "5e4750aaf469fb766d10b839c8026157";
+  static key = "6e366ce8b5c64c17cdc1520bdc6af5d8";
+  static subKey = "5e4750aaf469fb766d10b839c8026157";
 
   static url = {
     daily: "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json",
@@ -22,6 +22,12 @@ class Kobis {
     }
     const response = await axios.get(Kobis.url.daily, { params });
 
+    if (response.data.faultInfo) {
+      params.key = Kobis.subKey;
+      const response = await axios.get(Kobis.url.daily, { params });
+      return response.data;
+    }
+
     return response.data;
   }
 
@@ -32,6 +38,12 @@ class Kobis {
       weekGb: "0"
     }
     const response = await axios.get(Kobis.url.weekly, { params });
+
+    if (response.data.faultInfo) {
+      params.key = Kobis.subKey;
+      const response = await axios.get(Kobis.url.weekly, { params });
+      return response.data;
+    }
 
     return response.data;
   }
@@ -44,6 +56,12 @@ class Kobis {
     }
     const response = await axios.get(Kobis.url.list, { params });
 
+    if (response.data.faultInfo) {
+      params.key = Kobis.subKey;
+      const response = await axios.get(Kobis.url.list, { params });
+      return response.data;
+    }
+
     return response.data;
   }
 
@@ -53,6 +71,12 @@ class Kobis {
       movieCd
     }
     const response = await axios.get(Kobis.url.info, { params });
+
+    if (response.data.faultInfo) {
+      params.key = Kobis.subKey;
+      const response = await axios.get(Kobis.url.info, { params });
+      return response.data;
+    }
 
     return response.data;
   }

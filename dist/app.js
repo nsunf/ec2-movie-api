@@ -12,6 +12,7 @@ const boxoffice_1 = __importDefault(require("./routes/boxoffice"));
 const movie_1 = __importDefault(require("./routes/movie"));
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)());
+app.use(express_1.default.static("public"));
 app.use("/", index_1.default);
 app.use("/boxoffice", boxoffice_1.default);
 app.use("/movie", movie_1.default);
