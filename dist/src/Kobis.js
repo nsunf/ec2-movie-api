@@ -59,7 +59,8 @@ class Kobis {
         });
     }
 }
-Kobis.key = "6e366ce8b5c64c17cdc1520bdc6af5d8";
+// static key = "6e366ce8b5c64c17cdc1520bdc6af5d8";
+Kobis.key = "5e4750aaf469fb766d10b839c8026157";
 Kobis.url = {
     daily: "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json",
     weekly: "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchWeeklyBoxOfficeList.json",
