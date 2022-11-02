@@ -31,11 +31,11 @@ router.get("/list", (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     const movieListRes = yield kobis.getMovieList(movieNm, curPage);
     const totCnt = movieListRes.movieListResult.totCnt;
     const movieList = movieListRes.movieListResult.movieList;
-    const totPage = Math.floor(totCnt / 10) + 1;
+    const totPage = (Math.floor(totCnt / 10) + 1).toString();
     const editedMovieList = movieList.map((movie) => __awaiter(void 0, void 0, void 0, function* () {
-        const movieInfo = yield kobis.getMovieInfo(movie.movieCd);
+        var _b, _c;
         const title = movie.movieNm;
-        const dirs = movieInfo.movieInfoResult.movieInfo.directors;
+        const dirs = movie.directors;
         let dirsStr = "";
         if (dirs.length > 1) {
             const dirsSArr = dirs.map(dir => dir.peopleNm);
@@ -44,8 +44,11 @@ router.get("/list", (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         else if (dirs.length === 1) {
             dirsStr = dirs[0].peopleNm;
         }
-        const imgSrc = yield crawler.getPosterImg(title, dirsStr);
-        return Object.assign(Object.assign({}, movie), { poster: imgSrc });
+        const movieInfo = yield crawler.getMovieInfo(title, dirsStr);
+        const poster = (_b = movieInfo === null || movieInfo === void 0 ? void 0 : movieInfo.posterSrc) !== null && _b !== void 0 ? _b : "";
+        const score = (_c = movieInfo === null || movieInfo === void 0 ? void 0 : movieInfo.score) !== null && _c !== void 0 ? _c : 0;
+        return Object.assign(Object.assign({}, movie), { score,
+            poster });
     }));
     const result = yield Promise.all(editedMovieList);
     res.json({

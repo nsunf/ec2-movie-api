@@ -22,12 +22,11 @@ router.get("/list", async (req, res) => {
   const movieListRes = await kobis.getMovieList(movieNm, curPage);
   const totCnt = movieListRes.movieListResult.totCnt;
   const movieList = movieListRes.movieListResult.movieList;
-  const totPage = Math.floor(totCnt / 10) + 1;
+  const totPage = (Math.floor(totCnt / 10) + 1).toString();
 
   const editedMovieList = movieList.map(async movie => {
-    const movieInfo = await kobis.getMovieInfo(movie.movieCd);
     const title = movie.movieNm;
-    const dirs = movieInfo.movieInfoResult.movieInfo.directors;
+    const dirs = movie.directors;
 
     let dirsStr = "";
     if (dirs.length > 1) {
@@ -37,11 +36,14 @@ router.get("/list", async (req, res) => {
       dirsStr = dirs[0].peopleNm;
     }
 
-    const imgSrc = await crawler.getPosterImg(title, dirsStr);
+    const movieInfo = await crawler.getMovieInfo(title, dirsStr);
+    const poster = movieInfo?.posterSrc ?? "";
+    const score = movieInfo?.score ?? 0;
 
     return {
       ...movie,
-      poster: imgSrc
+      score,
+      poster
     }
   })
 
