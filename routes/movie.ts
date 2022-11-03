@@ -38,12 +38,14 @@ router.get("/list", async (req, res) => {
 
     const movieInfo = await crawler.getMovieInfo(title, dirsStr);
     const poster = movieInfo?.posterSrc ?? "";
+    const posterSmall = movieInfo?.posterSrcSmall ?? "";
     const score = movieInfo?.score ?? 0;
 
     return {
       ...movie,
       score,
-      poster
+      poster,
+      posterSmall
     }
   })
 

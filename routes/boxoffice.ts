@@ -37,11 +37,12 @@ router.get("/daily", async (req, res) => {
       dirsStr = dirs[0].peopleNm;
     }
 
-    const imgSrc = await crawler.getPosterImg(title, dirsStr);
+    const poster = await crawler.getPosterImg(title, dirsStr);
 
     return {
       ...movie,
-      poster: imgSrc
+      poster: poster?.origin,
+      posterSmall: poster?.small
     }
   })
 
@@ -83,11 +84,12 @@ router.get("/weekly", async (req, res) => {
       dirsStr = dirs[0].peopleNm;
     }
 
-    const imgSrc = await crawler.getPosterImg(title, dirsStr);
+    const poster = await crawler.getPosterImg(title, dirsStr);
 
     return {
       ...movie,
-      poster: imgSrc
+      poster: poster?.origin,
+      posterSmall: poster?.small
     }
   })
 

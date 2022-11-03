@@ -44,8 +44,8 @@ router.get("/daily", (req, res) => __awaiter(void 0, void 0, void 0, function* (
         else if (dirs.length === 1) {
             dirsStr = dirs[0].peopleNm;
         }
-        const imgSrc = yield crawler.getPosterImg(title, dirsStr);
-        return Object.assign(Object.assign({}, movie), { poster: imgSrc });
+        const poster = yield crawler.getPosterImg(title, dirsStr);
+        return Object.assign(Object.assign({}, movie), { poster: poster === null || poster === void 0 ? void 0 : poster.origin, posterSmall: poster === null || poster === void 0 ? void 0 : poster.small });
     }));
     const result = yield Promise.all(editedMovieList);
     res.json({
@@ -80,8 +80,8 @@ router.get("/weekly", (req, res) => __awaiter(void 0, void 0, void 0, function* 
         else if (dirs.length === 1) {
             dirsStr = dirs[0].peopleNm;
         }
-        const imgSrc = yield crawler.getPosterImg(title, dirsStr);
-        return Object.assign(Object.assign({}, movie), { poster: imgSrc });
+        const poster = yield crawler.getPosterImg(title, dirsStr);
+        return Object.assign(Object.assign({}, movie), { poster: poster === null || poster === void 0 ? void 0 : poster.origin, posterSmall: poster === null || poster === void 0 ? void 0 : poster.small });
     }));
     const result = yield Promise.all(editedMovieList);
     res.json({

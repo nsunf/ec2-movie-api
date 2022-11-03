@@ -1,5 +1,6 @@
 import axios from "axios";
 import * as cheerio from "cheerio";
+import { urlToBase64 } from "./urlToBase64";
 
 class Crawler {
   static url = {
@@ -34,7 +35,7 @@ class Crawler {
     return "https://movie.naver.com" + link;
   }
 
-  async getMovieInfo(title: string, dirs: string): Promise<{ posterSrc: string, summary1: string, summary2: string, score: string, images: string[] }|undefined> {
+  async getMovieInfo(title: string, dirs: string): Promise<{ posterSrc: string, posterSrcSmall: string, summary1: string, summary2: string, score: string, images: string[] }|undefined> {
     const urlStr = await this.getMovieUrl(title, dirs);
     if (!urlStr) return;
 
@@ -48,6 +49,7 @@ class Crawler {
 
     const posterUrl = new URL(posterSrc ?? "");
     const imgSrc = posterUrl.origin + posterUrl.pathname;
+    const small = await urlToBase64(posterSrc ?? "");
 
     // still cut
     const url = new URL(urlStr);
@@ -69,6 +71,7 @@ class Crawler {
 
     return {
       posterSrc: imgSrc,
+      posterSrcSmall: small,
       summary1,
       summary2,
       score,
@@ -76,7 +79,7 @@ class Crawler {
     };
   }
 
-  async getPosterImg(title: string, dirs: string): Promise<string|undefined> {
+  async getPosterImg(title: string, dirs: string): Promise<{ small: string, origin: string } | undefined> {
     const urlStr = await this.getMovieUrl(title, dirs);
     if (!urlStr) return;
 
@@ -87,7 +90,9 @@ class Crawler {
     const posterUrl = new URL(posterSrc ?? "");
     const imgSrc = posterUrl.origin + posterUrl.pathname;
 
-    return imgSrc;
+    const small = await urlToBase64(posterSrc ?? "");
+
+    return { small: small, origin: imgSrc };
   }
 
   async getStillCutImages(title: string, dirs: string): Promise<string[]|undefined> {

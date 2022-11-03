@@ -34,7 +34,7 @@ router.get("/list", (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     const movieList = movieListRes.movieListResult.movieList;
     const totPage = (Math.floor(totCnt / 10) + 1).toString();
     const editedMovieList = movieList.map((movie) => __awaiter(void 0, void 0, void 0, function* () {
-        var _b, _c;
+        var _b, _c, _d;
         const title = movie.movieNm;
         const dirs = movie.directors;
         let dirsStr = "";
@@ -47,9 +47,11 @@ router.get("/list", (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         }
         const movieInfo = yield crawler.getMovieInfo(title, dirsStr);
         const poster = (_b = movieInfo === null || movieInfo === void 0 ? void 0 : movieInfo.posterSrc) !== null && _b !== void 0 ? _b : "";
-        const score = (_c = movieInfo === null || movieInfo === void 0 ? void 0 : movieInfo.score) !== null && _c !== void 0 ? _c : 0;
+        const posterSmall = (_c = movieInfo === null || movieInfo === void 0 ? void 0 : movieInfo.posterSrcSmall) !== null && _c !== void 0 ? _c : "";
+        const score = (_d = movieInfo === null || movieInfo === void 0 ? void 0 : movieInfo.score) !== null && _d !== void 0 ? _d : 0;
         return Object.assign(Object.assign({}, movie), { score,
-            poster });
+            poster,
+            posterSmall });
     }));
     const result = yield Promise.all(editedMovieList);
     res.json({

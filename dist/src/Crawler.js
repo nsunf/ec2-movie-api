@@ -37,6 +37,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const axios_1 = __importDefault(require("axios"));
 const cheerio = __importStar(require("cheerio"));
+const urlToBase64_1 = require("./urlToBase64");
 class Crawler {
     constructor() {
     }
@@ -73,6 +74,7 @@ class Crawler {
             const score = $(".mv_info_area .main_score .score:first-child a .star_score :not(:first-child)").text();
             const posterUrl = new URL(posterSrc !== null && posterSrc !== void 0 ? posterSrc : "");
             const imgSrc = posterUrl.origin + posterUrl.pathname;
+            const small = yield (0, urlToBase64_1.urlToBase64)(posterSrc !== null && posterSrc !== void 0 ? posterSrc : "");
             // still cut
             const url = new URL(urlStr);
             const code = url.searchParams.get("code");
@@ -88,6 +90,7 @@ class Crawler {
             });
             return {
                 posterSrc: imgSrc,
+                posterSrcSmall: small,
                 summary1,
                 summary2,
                 score,
@@ -105,7 +108,8 @@ class Crawler {
             const posterSrc = $(".poster a img").attr("src");
             const posterUrl = new URL(posterSrc !== null && posterSrc !== void 0 ? posterSrc : "");
             const imgSrc = posterUrl.origin + posterUrl.pathname;
-            return imgSrc;
+            const small = yield (0, urlToBase64_1.urlToBase64)(posterSrc !== null && posterSrc !== void 0 ? posterSrc : "");
+            return { small: small, origin: imgSrc };
         });
     }
     getStillCutImages(title, dirs) {
