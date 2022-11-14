@@ -106,9 +106,9 @@ class Crawler {
             const response = yield axios_1.default.get(urlStr);
             const $ = cheerio.load(response.data);
             const posterSrc = $(".poster a img").attr("src");
-            const posterUrl = new URL(posterSrc !== null && posterSrc !== void 0 ? posterSrc : "");
+            const posterUrl = new URL(posterSrc !== null && posterSrc !== void 0 ? posterSrc : "https://ssl.pstatic.net/static/movie/2012/06/dft_img203x290.png");
             const imgSrc = posterUrl.origin + posterUrl.pathname;
-            const small = yield (0, urlToBase64_1.urlToBase64)(posterSrc !== null && posterSrc !== void 0 ? posterSrc : "");
+            const small = yield (0, urlToBase64_1.urlToBase64)(posterSrc !== null && posterSrc !== void 0 ? posterSrc : "https://ssl.pstatic.net/static/movie/2012/06/dft_img203x290.png");
             return { small: small, origin: imgSrc };
         });
     }

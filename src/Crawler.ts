@@ -87,10 +87,10 @@ class Crawler {
     const $ = cheerio.load(response.data);
 
     const posterSrc = $(".poster a img").attr("src");
-    const posterUrl = new URL(posterSrc ?? "");
+    const posterUrl = new URL(posterSrc ?? "https://ssl.pstatic.net/static/movie/2012/06/dft_img203x290.png");
     const imgSrc = posterUrl.origin + posterUrl.pathname;
 
-    const small = await urlToBase64(posterSrc ?? "");
+    const small = await urlToBase64(posterSrc ?? "https://ssl.pstatic.net/static/movie/2012/06/dft_img203x290.png");
 
     return { small: small, origin: imgSrc };
   }
