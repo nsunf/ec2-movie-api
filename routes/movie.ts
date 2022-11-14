@@ -27,6 +27,7 @@ router.get("/list", async (req, res) => {
   const editedMovieList = movieList.map(async movie => {
     const title = movie.movieNm;
     const dirs = movie.directors;
+    console.log(dirs)
 
     let dirsStr = "";
     if (dirs.length > 1) {

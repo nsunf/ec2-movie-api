@@ -72,9 +72,9 @@ class Crawler {
             const summary1 = $(".story_area .h_tx_story").text();
             const summary2 = $(".story_area .con_tx").text();
             const score = $(".mv_info_area .main_score .score:first-child a .star_score :not(:first-child)").text();
-            const posterUrl = new URL(posterSrc !== null && posterSrc !== void 0 ? posterSrc : "");
+            const posterUrl = new URL(posterSrc !== null && posterSrc !== void 0 ? posterSrc : "https://ssl.pstatic.net/static/movie/2012/06/dft_img203x290.png");
             const imgSrc = posterUrl.origin + posterUrl.pathname;
-            const small = yield (0, urlToBase64_1.urlToBase64)(posterSrc !== null && posterSrc !== void 0 ? posterSrc : "");
+            const small = yield (0, urlToBase64_1.urlToBase64)(posterSrc !== null && posterSrc !== void 0 ? posterSrc : "https://ssl.pstatic.net/static/movie/2012/06/dft_img203x290.png");
             // still cut
             const url = new URL(urlStr);
             const code = url.searchParams.get("code");

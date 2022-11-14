@@ -47,9 +47,9 @@ class Crawler {
     const summary2 = $(".story_area .con_tx").text();
     const score = $(".mv_info_area .main_score .score:first-child a .star_score :not(:first-child)").text();
 
-    const posterUrl = new URL(posterSrc ?? "");
+    const posterUrl = new URL(posterSrc ?? "https://ssl.pstatic.net/static/movie/2012/06/dft_img203x290.png");
     const imgSrc = posterUrl.origin + posterUrl.pathname;
-    const small = await urlToBase64(posterSrc ?? "");
+    const small = await urlToBase64(posterSrc ?? "https://ssl.pstatic.net/static/movie/2012/06/dft_img203x290.png");
 
     // still cut
     const url = new URL(urlStr);

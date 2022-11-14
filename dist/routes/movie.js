@@ -37,6 +37,7 @@ router.get("/list", (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         var _b, _c, _d;
         const title = movie.movieNm;
         const dirs = movie.directors;
+        console.log(dirs);
         let dirsStr = "";
         if (dirs.length > 1) {
             const dirsSArr = dirs.map(dir => dir.peopleNm);
